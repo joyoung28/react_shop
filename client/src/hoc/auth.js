@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../_actions/user_action";
 
 export default function (SpecificComponent, option, adminRoute = null) {
   function AuthenticationCheck(props) {
     const dispatch = useDispatch();
+    let user = useSelector((state) => state.user);
 
     //option
     //null => 아무나 true=>로그인한 상태만 들어갈 수 있다. false=>로그인한 상태는 못들어간다.
     useEffect(() => {
       dispatch(auth()).then((res) => {
-        console.log(res);
+        // console.log(res);
+
         //로그인안한 상태
         if (!res.payload.isAuth) {
           if (option) {
@@ -30,7 +32,7 @@ export default function (SpecificComponent, option, adminRoute = null) {
         }
       });
     }, []);
-    return <SpecificComponent />;
+    return <SpecificComponent user={user} />;
   }
   return AuthenticationCheck;
 }
