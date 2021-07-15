@@ -2,7 +2,7 @@ import React from "react";
 import { Carousel } from "antd";
 
 const ImageSlider = ({ images }) => {
-  console.log(images);
+  // console.log(images);
   const imagesResult = images.map((image, index) => (
     <div key={index}>
       <img

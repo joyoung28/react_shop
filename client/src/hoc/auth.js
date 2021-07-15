@@ -25,7 +25,7 @@ export default function (SpecificComponent, option, adminRoute = null) {
             props.history.push("/");
           } else {
             //관리자인 상태, 로그인한상태로 못들어감.
-            if (!option) {
+            if (option === false) {
               props.history.push("/");
             }
           }

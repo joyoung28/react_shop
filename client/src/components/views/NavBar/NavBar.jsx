@@ -27,7 +27,13 @@ const NavBar = () => {
         <div className="menu_left">
           <LeftMenu mode="horizontal" />
         </div>
-        <div className="menu_rigth">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginTop: "10px",
+          }}
+        >
           <RightMenu mode="horizontal" />
         </div>
         <Button
@@ -46,7 +52,6 @@ const NavBar = () => {
           visible={visible}
         >
           <LeftMenu mode="inline" />
-          <RightMenu mode="inline" />
         </Drawer>
       </div>
     </nav>

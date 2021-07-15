@@ -18,8 +18,9 @@ const productSchema = Schema(
       type: Number,
       defalt: 0,
     },
-    continent: {
-      type: String,
+    continents: {
+      type: Number,
+      default: 1,
     },
     images: {
       type: Array,
@@ -31,12 +32,26 @@ const productSchema = Schema(
       maxlength: 100,
       default: 0,
     },
-    vies: {
+    veiws: {
       type: Number,
-      defalt: 0,
+      default: 0,
     },
   },
   { timestamps: true }
+);
+
+productSchema.index(
+  {
+    title: "text",
+    description: "text",
+  },
+  {
+    //검색 중요성
+    weights: {
+      title: 5,
+      description: 1,
+    },
+  }
 );
 
 const Product = mongoose.model("Product", productSchema);

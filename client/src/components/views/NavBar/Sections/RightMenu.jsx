@@ -1,9 +1,11 @@
 import React from "react";
-import { Menu } from "antd";
+import { Menu, Badge } from "antd";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { USER_SERVER } from "../../../../Config";
 import { withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
+const SubMenu = Menu.SubMenu;
 
 const RightMenu = (props) => {
   const user = useSelector((state) => state.user);
@@ -31,10 +33,18 @@ const RightMenu = (props) => {
     );
   } else {
     return (
-      <Menu mode={props.mode}>
+      <Menu style={{ display: "flex" }}>
         <Menu.Item key="upload">
           <a href="/product/upload">upload</a>
         </Menu.Item>
+        <Menu.Item key="cart" style={{ paddingTop: 3 }}>
+          <Badge count={5} style={{ marginRight: 15, marginTop: 8 }}>
+            <a href="/user/cart" className="head-example">
+              <ShoppingCartOutlined style={{ fontSize: 30, marginTop: 5 }} />
+            </a>
+          </Badge>
+        </Menu.Item>
+
         <Menu.Item key="logout">
           <a onClick={logoutHandler}>Logout</a>
         </Menu.Item>

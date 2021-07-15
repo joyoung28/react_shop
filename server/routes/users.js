@@ -50,6 +50,8 @@ router.get("/auth", auth, (req, res) => {
     lastname: req.user.name,
     role: req.user.role,
     image: req.user.image,
+    cart: req.user.cart,
+    history: req.user.history,
   });
 });
 
@@ -61,4 +63,46 @@ router.get("/logout", auth, (req, res) => {
   });
 });
 
+router.post("/addToCart", auth, (req, res) => {
+  // req.user는 auth.js에서 가져온것.
+  User.findOne({ _id: req.user._id }, (err, userInfo) => {
+    let duplicate = false;
+    // console.log(req.body.productId);
+    userInfo.cart.forEach((item) => {
+      if (item.id === req.body.productId) {
+        duplicate = true;
+      }
+    });
+    // console.log(duplicate);
+    if (duplicate) {
+      User.findOneAndUpdate(
+        { _id: req.user._id, "cart.id": req.body.productId },
+        { $inc: { "cart.$.quantity": 1 } },
+        { new: true },
+        (err, userInfo) => {
+          if (err) return res.status(400).json({ success: false, err });
+          return res.status(200).json({ success: true, cart: userInfo.cart });
+        }
+      );
+    } else {
+      User.findOneAndUpdate(
+        { _id: req.user._id },
+        {
+          $push: {
+            cart: {
+              id: req.body.productId,
+              quantity: 1,
+              date: Date.now(),
+            },
+          },
+        },
+        { new: true },
+        (err, userInfo) => {
+          if (err) return res.status(400).json({ success: false, err });
+          return res.status(200).send(userInfo.cart);
+        }
+      );
+    }
+  });
+});
 module.exports = router;
