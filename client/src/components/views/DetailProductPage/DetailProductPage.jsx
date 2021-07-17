@@ -13,13 +13,10 @@ const DetailProductPage = (props) => {
     axios
       .get(`/api/products/products_by_id?id=${productId}&type=single`)
       .then((res) => {
-        if (res.data.success) {
-          //   console.log(res.data);
-          setProduct(res.data.product[0]);
-        } else {
-          alert("데이터를 불러오는데 실패했습니다.");
-        }
-      });
+        console.log(res.data);
+        setProduct(res.data[0]);
+      })
+      .catch((err) => alert(err));
   }, []);
   return (
     <div style={{ width: "100%", padding: "3rem 4rem" }}>

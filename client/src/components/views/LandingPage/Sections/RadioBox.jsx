@@ -27,7 +27,6 @@ const RadioBox = ({ list, handleFilters }) => {
           </Radio.Group>
         </Panel>
       </Collapse>
-      ,
     </div>
   );
 };

@@ -207,6 +207,11 @@ array-flatten@1.1.1:
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
   integrity sha1-ml9pkFGx5wczKPKgCJaLZOopVdI=
 
+async@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/async/-/async-3.2.0.tgz#b3a2685c5ebb641d3de02d161002c60fc9f85720"
+  integrity sha512-TR2mEZFVOj2pLStYxLht7TyfuRzaydfpxr3k9RpHIzMgw7A64dzsdqCxH1WJyQdoe8T10nDXd9wnEigmiuHIZw==
+
 at-least-node@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
@@ -1753,11 +1758,6 @@ rc@^1.2.8:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
-
-react-image-gallery@^1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/react-image-gallery/-/react-image-gallery-1.2.4.tgz#bf12b7ff8b03a019ce8a9c6652a7f8e94480bb1c"
-  integrity sha512-M9iNjYHm1f8C55PQd3EBv5I6wF6FbjV9sIlMtjJwTVAR7ryJwd5/9m7b/k9/029uYNPIL4kF8shY7mn9IMUvHQ==
 
 react-is@^16.12.0:
   version "16.13.1"

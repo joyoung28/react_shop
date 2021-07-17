@@ -34,11 +34,17 @@ const RightMenu = (props) => {
   } else {
     return (
       <Menu style={{ display: "flex" }}>
+        <Menu.Item key="history">
+          <a href="/history">history</a>
+        </Menu.Item>
         <Menu.Item key="upload">
-          <a href="/product/upload">upload</a>
+          <a href="/product/upload">Upload</a>
         </Menu.Item>
         <Menu.Item key="cart" style={{ paddingTop: 3 }}>
-          <Badge count={5} style={{ marginRight: 15, marginTop: 8 }}>
+          <Badge
+            count={user.userData && user.userData.cart.length}
+            style={{ marginRight: 15, marginTop: 8 }}
+          >
             <a href="/user/cart" className="head-example">
               <ShoppingCartOutlined style={{ fontSize: 30, marginTop: 5 }} />
             </a>
